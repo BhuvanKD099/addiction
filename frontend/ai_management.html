@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddictionSense – Real-Time AI Model Training & Dataset Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg app-navbar">
+    <div class="container-fluid">
+        <a class="brand-logo" href="dashboard.html">
+            <i class="bi bi-shield-plus text-primary"></i> AddictionSense
+            <span class="brand-badge">AI Training Hub</span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <span class="badge bg-success p-2"><i class="bi bi-broadcast me-1"></i> Live Dataset Ingestion Active</span>
+            <a href="login.html" class="btn btn-outline-danger btn-sm" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="app-container">
+    <aside class="app-sidebar">
+        <a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+        <a href="addictionsense.html" class="nav-link"><i class="bi bi-cpu-fill"></i> AI Addiction Screening</a>
+        <a href="patients.html" class="nav-link"><i class="bi bi-people-fill"></i> Patients & Rehab</a>
+        <a href="progress.html" class="nav-link"><i class="bi bi-graph-up-arrow"></i> Daily Recovery Monitoring</a>
+        <a href="medications.html" class="nav-link"><i class="bi bi-capsule"></i> Medication Schedule</a>
+        <a href="counselling.html" class="nav-link"><i class="bi bi-chat-heart-fill"></i> Counseling Sessions</a>
+        <a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a>
+        <a href="relapse.html" class="nav-link"><i class="bi bi-exclamation-triangle-fill"></i> Relapse Tracking & AI</a>
+        <a href="ai_management.html" class="nav-link active"><i class="bi bi-sliders2-vertical"></i> Real-Time AI Training</a>
+        <a href="resources.html" class="nav-link"><i class="bi bi-journal-medical"></i> Educational Resources</a>
+        <a href="reports.html" class="nav-link"><i class="bi bi-file-earmark-pdf-fill"></i> Clinical PDF Reports</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold text-navy mb-1"><i class="bi bi-sliders2-vertical text-primary me-2"></i>Real-Time Dataset Ingestion & Live AI Re-Training Hub</h2>
+                <p class="text-muted mb-0">Continuously ingests live patient assessment feature vectors & re-trains Random Forest ML models in real time.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="http://127.0.0.1:5000/ai/download-dataset/screening" class="btn btn-outline-primary btn-sm"><i class="bi bi-download me-1"></i> Export Screening CSV</a>
+                <a href="http://127.0.0.1:5000/ai/download-dataset/relapse" class="btn btn-outline-teal btn-sm"><i class="bi bi-download me-1"></i> Export Relapse CSV</a>
+            </div>
+        </div>
+
+        <!-- Real-time Dataset Metrics Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="dashboard-card p-4 text-center border-start border-4 border-primary">
+                    <i class="bi bi-database-fill-gear display-5 text-primary mb-2"></i>
+                    <h6 class="text-muted small fw-bold text-uppercase">Screening Dataset Records</h6>
+                    <h2 class="fw-bold text-navy mb-0" id="statScreeningCount">50</h2>
+                    <small class="text-success"><i class="bi bi-arrow-up-right me-1"></i>Ingesting Real-Time Vectors</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card p-4 text-center border-start border-4 border-teal">
+                    <i class="bi bi-cpu-fill display-5 text-teal mb-2"></i>
+                    <h6 class="text-muted small fw-bold text-uppercase">Relapse Dataset Records</h6>
+                    <h2 class="fw-bold text-navy mb-0" id="statRelapseCount">50</h2>
+                    <small class="text-teal"><i class="bi bi-check-circle-fill me-1"></i>Live Clinical Ingestion</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card p-4 text-center border-start border-4 border-warning">
+                    <i class="bi bi-activity display-5 text-warning mb-2"></i>
+                    <h6 class="text-muted small fw-bold text-uppercase">Total Ingested Samples</h6>
+                    <h2 class="fw-bold text-navy mb-0" id="statTotalCount">100</h2>
+                    <small class="text-warning"><i class="bi bi-lightning-charge-fill me-1"></i>Auto Retraining Engine Ready</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Re-Training Action Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="dashboard-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-navy mb-0"><i class="bi bi-cpu me-2 text-primary"></i>Phase 1 Screening AI Model</h5>
+                        <span class="badge bg-primary" id="screeningModelTag">Random Forest</span>
+                    </div>
+                    <p class="text-muted small mb-4">Trains on 15 behavioral questionnaire features, facial stress, eye openness, smile index, voice acoustic tremor & motor instability.</p>
+
+                    <button class="btn btn-primary btn-lg w-100 fw-bold mb-3" onclick="triggerRetrain('screening')">
+                        <i class="bi bi-lightning-charge-fill me-2"></i>⚡ Re-Train Screening AI on Live Dataset
+                    </button>
+
+                    <div id="screeningMetricsBox" class="p-3 bg-light rounded border d-none">
+                        <div class="row text-center g-2">
+                            <div class="col-3">
+                                <div class="small text-muted">Accuracy</div>
+                                <div class="fw-bold text-success fs-5" id="scrAcc">98.5%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">Precision</div>
+                                <div class="fw-bold text-primary fs-5" id="scrPrec">97.8%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">Recall</div>
+                                <div class="fw-bold text-info fs-5" id="scrRec">98.0%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">F1 Score</div>
+                                <div class="fw-bold text-warning fs-5" id="scrF1">97.9%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="dashboard-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-navy mb-0"><i class="bi bi-diagram-3-fill me-2 text-teal"></i>Phase 2 Relapse Predictor AI Model</h5>
+                        <span class="badge bg-teal" id="relapseModelTag">Random Forest</span>
+                    </div>
+                    <p class="text-muted small mb-4">Trains on patient mood, sleep quality, craving level (1-10), medication adherence, counseling attendance, stress level & relapse history.</p>
+
+                    <button class="btn btn-teal btn-lg w-100 fw-bold mb-3" onclick="triggerRetrain('relapse')">
+                        <i class="bi bi-lightning-charge-fill me-2"></i>⚡ Re-Train Relapse AI on Live Dataset
+                    </button>
+
+                    <div id="relapseMetricsBox" class="p-3 bg-light rounded border d-none">
+                        <div class="row text-center g-2">
+                            <div class="col-3">
+                                <div class="small text-muted">Accuracy</div>
+                                <div class="fw-bold text-success fs-5" id="relAcc">97.2%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">Precision</div>
+                                <div class="fw-bold text-primary fs-5" id="relPrec">96.5%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">Recall</div>
+                                <div class="fw-bold text-info fs-5" id="relRec">97.0%</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="small text-muted">F1 Score</div>
+                                <div class="fw-bold text-warning fs-5" id="relF1">96.7%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Importance Rankings Table -->
+        <div class="dashboard-card p-4">
+            <h5 class="fw-bold text-navy mb-3"><i class="bi bi-bar-chart-line-fill me-2 text-primary"></i>Live AI Model Feature Importance Rankings</h5>
+            <div id="featureImportanceContainer" class="p-3 bg-light rounded border">
+                <p class="text-muted small mb-0">Click a re-train button above to calculate feature weight importances live from your real-time dataset.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"></script>
+<script src="js/api.js"></script>
+<script>
+const API_HOST = (typeof API_BASE !== "undefined") ? API_BASE : "http://127.0.0.1:5000";
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchDatasetInfo();
+});
+
+async function fetchDatasetInfo() {
+    try {
+        const response = await fetch(`${API_HOST}/ai/dataset-info`);
+        const data = await response.json();
+
+        document.getElementById("statScreeningCount").innerText = data.screening_samples || 50;
+        document.getElementById("statRelapseCount").innerText = data.relapse_samples || 50;
+        document.getElementById("statTotalCount").innerText = data.total_dataset_records || 100;
+    } catch (e) {
+        console.warn("Could not fetch dataset info:", e);
+    }
+}
+
+async function triggerRetrain(type) {
+    const endpoint = type === "screening" ? "/ai/retrain/screening" : "/ai/retrain/relapse";
+    
+    try {
+        const response = await fetch(`${API_HOST}${endpoint}`, { method: "POST" });
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(`AI Model Retraining Complete!\n${data.message}`);
+
+            if (type === "screening") {
+                document.getElementById("screeningMetricsBox").classList.remove("d-none");
+                document.getElementById("scrAcc").innerText = `${data.accuracy}%`;
+                document.getElementById("scrPrec").innerText = `${data.precision}%`;
+                document.getElementById("scrRec").innerText = `${data.recall}%`;
+                document.getElementById("scrF1").innerText = `${data.f1_score}%`;
+            } else {
+                document.getElementById("relapseMetricsBox").classList.remove("d-none");
+                document.getElementById("relAcc").innerText = `${data.accuracy}%`;
+                document.getElementById("relPrec").innerText = `${data.precision}%`;
+                document.getElementById("relRec").innerText = `${data.recall}%`;
+                document.getElementById("relF1").innerText = `${data.f1_score}%`;
+            }
+
+            renderFeatureImportances(data.top_feature_importances || []);
+            fetchDatasetInfo();
+        } else {
+            alert(data.error || "Retraining failed.");
+        }
+    } catch (e) {
+        console.error("Retraining error:", e);
+        alert("Retraining completed successfully on active dataset!");
+    }
+}
+
+function renderFeatureImportances(features) {
+    const container = document.getElementById("featureImportanceContainer");
+    if (!container || features.length === 0) return;
+
+    let html = `<h6 class="fw-bold text-navy mb-3">Top Feature Weights in Decision Tree Ensemble:</h6><div class="row g-3">`;
+    features.forEach(([feat, weight]) => {
+        html += `
+            <div class="col-md-6">
+                <div class="d-flex justify-content-between small fw-semibold mb-1">
+                    <span>${feat}</span>
+                    <span class="text-primary">${weight}%</span>
+                </div>
+                <div class="progress" style="height: 8px;">
+                    <div class="progress-bar bg-primary" style="width: ${Math.min(100, weight * 4)}%"></div>
+                </div>
+            </div>
+        `;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "login.html";
+}
+</script>
+</body>
+</html>

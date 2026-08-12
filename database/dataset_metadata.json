@@ -1,0 +1,16 @@
+{
+    "dataset_version": "v1.0.3",
+    "last_updated": "2026-08-10",
+    "screening_total_samples": 3,
+    "relapse_total_samples": 2,
+    "anonymized": true,
+    "consent_required": true,
+    "seen_sample_hashes": [
+        "8a06dba3a99d11b62950d63f8f7782f3",
+        "0a919c1606394966e4e8e0317eaf9ec7",
+        "06b7594dda155e27acc772b626e30215",
+        "fec965c22d855bd3ff273b419bd6b8c6",
+        "d55d4f4c9dd037f4dfc822d64c1ed094"
+    ],
+    "last_retrained": "2026-08-12T10:00:24"
+}

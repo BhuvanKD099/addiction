@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-navy: #1e3a8a;
+    --primary-blue: #2563eb;
+    --medical-teal: #0284c7;
+    --recovery-green: #059669;
+    --accent-amber: #d97706;
+    --danger-red: #dc2626;
+    --bg-slate: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-light: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 10px 25px -5px rgba(30, 58, 138, 0.08);
+    --shadow-lg: 0 20px 40px -15px rgba(0,0,0,0.12);
+}
+
+body {
+    background-color: var(--bg-slate);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navbar / Header */
+.app-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    padding: 0.8rem 1.5rem;
+}
+
+.brand-logo {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--primary-navy);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-badge {
+    background: linear-gradient(135deg, var(--medical-teal), var(--recovery-green));
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Layout Architecture */
+.app-container {
+    display: flex;
+    min-height: calc(100vh - 65px);
+}
+
+.app-sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid var(--border-light);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.app-sidebar .nav-link {
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.25s ease;
+}
+
+.app-sidebar .nav-link:hover,
+.app-sidebar .nav-link.active {
+    color: var(--primary-navy);
+    background: #eff6ff;
+}
+
+.app-sidebar .nav-link.active {
+    font-weight: 700;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Stat & Dashboard Cards */
+.dashboard-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.icon-blue { background: #dbeafe; color: var(--primary-blue); }
+.icon-teal { background: #e0f2fe; color: var(--medical-teal); }
+.icon-green { background: #d1fae5; color: var(--recovery-green); }
+.icon-amber { background: #fef3c7; color: var(--accent-amber); }
+.icon-red { background: #fee2e2; color: var(--danger-red); }
+
+/* Buttons */
+.btn-navy {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+}
+.btn-navy:hover {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.btn-teal {
+    background-color: var(--medical-teal);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+}
+.btn-teal:hover {
+    background-color: #0369a1;
+    color: #ffffff;
+}
+
+/* Webcam Container */
+.webcam-container {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: #0f172a;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-light);
+}
+
+.webcam-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.scanner-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    border: 2px dashed rgba(2, 132, 199, 0.6);
+    margin: 20px;
+    border-radius: 12px;
+    animation: pulseScan 2s infinite ease-in-out;
+}
+
+@keyframes pulseScan {
+    0% { border-color: rgba(2, 132, 199, 0.3); }
+    50% { border-color: rgba(5, 150, 105, 0.9); }
+    100% { border-color: rgba(2, 132, 199, 0.3); }
+}
+
+/* Progress Gauges & Badges */
+.badge-low { background-color: #d1fae5; color: #065f46; font-weight: 700; }
+.badge-mod { background-color: #fef3c7; color: #92400e; font-weight: 700; }
+.badge-high { background-color: #fee2e2; color: #991b1b; font-weight: 700; }
+
+/* Mobile PWA Responsive & Touch Optimizations */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #0f172a;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1050;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-bottom-nav .nav-item {
+    color: #94a3b8;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.mobile-bottom-nav .nav-item i {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+}
+
+.mobile-bottom-nav .nav-item.active,
+.mobile-bottom-nav .nav-item:hover {
+    color: #38bdf8;
+}
+
+@media (max-width: 992px) {
+    .app-sidebar {
+        display: none;
+    }
+    .app-container {
+        flex-direction: column;
+        padding-bottom: 65px;
+    }
+    .mobile-bottom-nav {
+        display: flex;
+    }
+    .main-content {
+        padding: 15px;
+    }
+}

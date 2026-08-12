@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AddictionSense</string>
+    <string name="title_activity_main">AddictionSense</string>
+    <string name="package_name">com.addictionsense.app</string>
+    <string name="custom_url_scheme">com.addictionsense.app</string>
+</resources>

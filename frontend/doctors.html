@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddictionSense – Doctors Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg app-navbar">
+    <div class="container-fluid">
+        <a class="brand-logo" href="dashboard.html">
+            <i class="bi bi-shield-plus text-primary"></i> AddictionSense
+            <span class="brand-badge">Medical Staff</span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-primary btn-sm fw-bold" onclick="openAddDoctorModal()"><i class="bi bi-person-plus-fill me-1"></i> Register Doctor</button>
+            <a href="login.html" class="btn btn-outline-danger btn-sm" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="app-container">
+    <aside class="app-sidebar">
+        <a href="dashboard.html" class="nav-link"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+        <a href="addictionsense.html" class="nav-link"><i class="bi bi-cpu-fill"></i> AI Addiction Screening</a>
+        <a href="patients.html" class="nav-link"><i class="bi bi-people-fill"></i> Patients & Rehab</a>
+        <a href="doctors.html" class="nav-link active"><i class="bi bi-person-badge-fill"></i> Doctors Directory</a>
+        <a href="progress.html" class="nav-link"><i class="bi bi-graph-up-arrow"></i> Daily Recovery Monitoring</a>
+        <a href="medications.html" class="nav-link"><i class="bi bi-capsule"></i> Medication Schedule</a>
+        <a href="counselling.html" class="nav-link"><i class="bi bi-chat-heart-fill"></i> Counseling Sessions</a>
+        <a href="appointments.html" class="nav-link"><i class="bi bi-calendar-check"></i> Appointments</a>
+        <a href="relapse.html" class="nav-link"><i class="bi bi-exclamation-triangle-fill"></i> Relapse Tracking & AI</a>
+        <a href="resources.html" class="nav-link"><i class="bi bi-journal-medical"></i> Educational Resources</a>
+        <a href="reports.html" class="nav-link"><i class="bi bi-file-earmark-pdf-fill"></i> Clinical PDF Reports</a>
+    </aside>
+
+    <main class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold text-navy mb-1"><i class="bi bi-person-badge-fill text-primary me-2"></i>Medical Specialists Directory</h2>
+                <p class="text-muted mb-0">Manage addiction psychiatrists, clinical psychologists, and rehabilitation physicians.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary fw-bold" onclick="openAddDoctorModal()"><i class="bi bi-person-plus-fill me-1"></i> Register New Doctor</button>
+                <input type="text" id="searchDoctor" class="form-control form-control-sm" placeholder="Search doctors...">
+            </div>
+        </div>
+
+        <div class="dashboard-card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Doctor Name</th>
+                            <th>Email</th>
+                            <th>Specialization</th>
+                            <th>Phone</th>
+                            <th>Experience</th>
+                            <th>Qualification</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorTable">
+                        <tr>
+                            <td>DOC-1</td>
+                            <td><strong class="text-navy">Dr. Sarah Jenkins</strong><br/><small class="text-muted">sarah.jenkins@hospital.org</small></td>
+                            <td><span class="badge bg-primary">Addiction Psychiatry</span></td>
+                            <td>+1 555-0101</td>
+                            <td>12 Years</td>
+                            <td>MD, PhD in Neuropsychiatry</td>
+                        </tr>
+                        <tr>
+                            <td>DOC-2</td>
+                            <td><strong class="text-navy">Dr. Robert Chen</strong><br/><small class="text-muted">robert.chen@hospital.org</small></td>
+                            <td><span class="badge bg-teal text-white" style="background:#0284c7">Substance Rehabilitation</span></td>
+                            <td>+1 555-0102</td>
+                            <td>8 Years</td>
+                            <td>MD, Board Certified Addictionology</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Add Doctor Modal -->
+<div class="modal fade" id="doctorModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-navy text-white">
+                <h5 class="modal-title fw-bold" id="modalTitle"><i class="bi bi-person-plus me-2"></i>Register New Doctor</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <input type="hidden" id="doctor_id">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Full Name</label>
+                        <input id="full_name" class="form-control" placeholder="Dr. Full Name">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Email</label>
+                        <input id="email" type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Password</label>
+                        <input id="password" type="password" class="form-control" placeholder="Account password">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Specialization</label>
+                        <input id="specialization" class="form-control" placeholder="e.g. Addiction Psychiatry">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Phone</label>
+                        <input id="phone" class="form-control" placeholder="+1 555-0000">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">Experience (Years)</label>
+                        <input id="experience" type="number" class="form-control" value="10">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label small fw-bold">Qualification</label>
+                        <input id="qualification" class="form-control" placeholder="e.g. MD, Board Certified Addictionology">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="saveButton" class="btn btn-primary fw-bold" onclick="saveDoctor()"><i class="bi bi-check-lg me-1"></i> Save Doctor</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/doctor.js"></script>
+</body>
+</html>

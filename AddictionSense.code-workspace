@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "AddictionSense Project",
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "python",
+		"python.analysis.extraPaths": [
+			"${workspaceFolder}/backend"
+		],
+		"files.autoSave": "afterDelay",
+		"editor.formatOnSave": true
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.python",
+			"ms-python.debugpy",
+			"ritwickdey.liveserver"
+		]
+	}
+}

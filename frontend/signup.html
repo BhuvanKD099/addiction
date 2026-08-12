@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AddictionSense Clinical Platform</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Auth & Main Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-body">
+
+    <!-- Ambient Glowing Background Blobs -->
+    <div class="auth-bg-decor">
+        <div class="auth-blob auth-blob-1"></div>
+        <div class="auth-blob auth-blob-2"></div>
+        <div class="auth-blob auth-blob-3"></div>
+    </div>
+
+    <!-- Main Split Authentication Wrapper -->
+    <div class="auth-wrapper">
+
+        <!-- Left Hero Showcase Panel -->
+        <div class="auth-hero">
+            <div class="hero-brand">
+                <div class="hero-brand-logo">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="hero-brand-text">AddictionSense</div>
+                <span class="hero-brand-tag">Clinical AI</span>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Join the Next Generation of Recovery Care</h1>
+                <p class="hero-subtitle">
+                    Connect patients, physicians, and support specialists in a synchronized ecosystem built for long-term health and relapse prevention.
+                </p>
+
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Personalized Recovery Milestones</h4>
+                            <p>Track daily progress, sobriety streaks, and AI-guided check-ins</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon teal">
+                            <i class="fa-solid fa-pills"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Medication & Dosage Tracking</h4>
+                            <p>Automated alerts, refills, and physician interaction monitoring</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon green">
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Multi-Tier Portal Access</h4>
+                            <p>Role-customized views for Patients, Doctors, Counselors, and Admins</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-footer">
+                <div>© 2026 AddictionSense Health Inc.</div>
+                <div class="hero-footer-badges">
+                    <span><i class="fa-solid fa-lock"></i> 256-Bit Encrypted</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form Panel -->
+        <div class="auth-form-container">
+            
+            <div class="auth-header">
+                <h2>Create an account</h2>
+                <p>Already have an account? <a href="login.html">Sign in instead</a></p>
+            </div>
+
+            <form class="auth-form" id="signupForm" onsubmit="register(event)">
+                
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label class="form-label" for="fullName">Full Name</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            class="form-control-custom" 
+                            placeholder="Dr. Sarah Jenkins or John Doe" 
+                            required 
+                            autocomplete="name"
+                        >
+                        <i class="fa-regular fa-user input-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            class="form-control-custom" 
+                            placeholder="name@example.com" 
+                            required 
+                            autocomplete="email"
+                        >
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Select Account Role -->
+                <div class="form-group">
+                    <label class="form-label">Account Type / Role</label>
+                    <div class="role-grid">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="patient" checked>
+                            <div class="role-card">
+                                <i class="fa-solid fa-user-heart"></i>
+                                <div class="role-info">
+                                    <h5>Patient</h5>
+                                    <span>Recovery tracker</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="role" value="doctor">
+                            <div class="role-card">
+                                <i class="fa-solid fa-user-doctor"></i>
+                                <div class="role-info">
+                                    <h5>Doctor</h5>
+                                    <span>Physician care</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="role" value="counselor">
+                            <div class="role-card">
+                                <i class="fa-solid fa-comments"></i>
+                                <div class="role-info">
+                                    <h5>Counselor</h5>
+                                    <span>Mental therapy</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="role" value="admin">
+                            <div class="role-card">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <div class="role-info">
+                                    <h5>Admin</h5>
+                                    <span>Clinic manager</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="form-control-custom" 
+                            placeholder="Create a strong password" 
+                            required 
+                            autocomplete="new-password"
+                        >
+                        <i class="fa-regular fa-lock input-icon"></i>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', this)" title="Toggle password visibility">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Password Strength Bar & Criteria -->
+                    <div class="password-strength-wrapper">
+                        <div class="strength-bar-container">
+                            <div class="strength-bar" id="strengthBar"></div>
+                        </div>
+                        <div class="strength-text">
+                            <span id="strengthLabel">Password Strength</span>
+                        </div>
+                        <div class="strength-rules">
+                            <span class="rule-item" id="ruleLen"><i class="fa-solid fa-circle"></i> 8+ characters</span>
+                            <span class="rule-item" id="ruleUpper"><i class="fa-solid fa-circle"></i> Uppercase letter</span>
+                            <span class="rule-item" id="ruleNum"><i class="fa-solid fa-circle"></i> Number</span>
+                            <span class="rule-item" id="ruleSpecial"><i class="fa-solid fa-circle"></i> Symbol</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            class="form-control-custom" 
+                            placeholder="Re-enter your password" 
+                            required 
+                            autocomplete="new-password"
+                        >
+                        <i class="fa-regular fa-lock-keyhole input-icon"></i>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)" title="Toggle password visibility">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Terms & Privacy Agreement -->
+                <div class="form-util-row">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="termsCheck" required checked>
+                        <span>I agree to the <a href="#" class="forgot-link" onclick="showToast('Terms', 'HIPAA Privacy Policy & System Usage Terms', 'info'); return false;">Terms of Service</a> & <a href="#" class="forgot-link" onclick="showToast('Privacy', 'Your data is strictly confidential.', 'info'); return false;">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit" id="signupBtn">
+                    <span class="spinner" id="btnSpinner"></span>
+                    <span id="btnText">Create Account</span>
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

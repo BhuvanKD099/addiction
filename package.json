@@ -1,0 +1,21 @@
+{
+  "name": "addictionsense",
+  "version": "1.0.0",
+  "description": "AddictionSense is an enterprise-grade, full-stack hybrid web platform and clinical decision support system designed for rehabilitation centers, hospitals, counselors, patients, and guardians. It integrates **Phase 1 AI Addiction Risk Screening** with **Phase 2 Rehabilitation & Relapse Monitoring**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0"
+  }
+}
